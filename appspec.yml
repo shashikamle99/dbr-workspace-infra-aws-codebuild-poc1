@@ -1,0 +1,9 @@
+version: 0.2
+os: linux
+
+phases:
+  install:
+    commands:
+      - terraform init
+      - terraform validate 
+      - terraform apply -var-file=dev.tfvars
