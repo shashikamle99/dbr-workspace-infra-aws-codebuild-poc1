@@ -1,6 +1,14 @@
 version: 0.2
 os: linux
 
+env:
+  parameter-store:
+    access_key: my-access-key
+    secret_key: my-secret-key
+    DATABRICKS_HOST: DATABRICKS_HOST
+    DATABRICKS_TOKEN: DATABRICKS_TOKEN
+}
+
 phases:
   install:
     commands:
