@@ -10,20 +10,12 @@ terraform {
   }
 }
 
-data "aws_ssm_parameter" "foo" {
-  name = "my-access-key"
-  
-}
 
-data "aws_ssm_parameter" "foo1" {
-  name = "my-secret-key"
   
 }
 
 provider "aws" {
   region = var.region
-  access_key = data.aws_ssm_parameter.foo.value
-  secret_key = data.aws_ssm_parameter.foo1.value
 }
 
 // initialize provider in "MWS" mode to provision new workspace

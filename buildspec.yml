@@ -1,10 +1,9 @@
 version: 0.2
 os: linux
 
-env:
-  parameter-store:
-    access_key: my-access-key
-    secret_key: my-secret-key
+# env:
+#   parameter-store:
+   
 
 phases:
   install:
@@ -17,6 +16,5 @@ phases:
       - sudo apt update && sudo apt install terraform -y
       - terraform -version
       - terraform init
-      #- sleep 60s
       - terraform validate
       - terraform plan --var-file=dev.tfvars
