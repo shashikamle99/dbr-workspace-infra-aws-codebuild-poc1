@@ -11,12 +11,12 @@ terraform {
 }
 
 data "aws_ssm_parameter" "foo" {
-  name = "my_access_key"
+  name = "my-access-key"
   
 }
 
 data "aws_ssm_parameter" "foo1" {
-  name = "my_secret_key"
+  name = "my-secret-key"
   
 }
 
