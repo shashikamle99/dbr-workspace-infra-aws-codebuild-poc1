@@ -15,6 +15,6 @@ phases:
       - sudo apt update && sudo apt install terraform -y
       - terraform -version
       - terraform init
-      - sleep 60s
+      #- sleep 60s
       - terraform validate
       - terraform plan --var-file=dev.tfvars
