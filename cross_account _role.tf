@@ -1,5 +1,5 @@
 data "databricks_aws_assume_role_policy" "this" {
-  external_id = var.databricks_account_id
+  external_id = local.databricks_account_id
 }
 
 resource "aws_iam_role" "cross_account_role" {
@@ -19,7 +19,7 @@ resource "aws_iam_role_policy" "this" {
 
 resource "databricks_mws_credentials" "this" {
   provider         = databricks.mws
-  account_id       = var.databricks_account_id
+  account_id       = local.databricks_account_id
   role_arn         = aws_iam_role.cross_account_role.arn
   credentials_name = "${local.prefix}-creds"
   #depends_on       = [aws_iam_role_policy.this,aws_iam_role.cross_account_role]
