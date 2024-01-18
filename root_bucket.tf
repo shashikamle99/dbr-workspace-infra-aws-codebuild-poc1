@@ -26,13 +26,13 @@ resource "aws_s3_bucket_public_access_block" "root_storage_bucket" {
   depends_on              = [aws_s3_bucket.root_storage_bucket]
 }
 
-data "databricks_aws_bucket_policy" "this" {
+data "databricks_aws_bucket_policy" "aws_bucket_policy" {
   bucket = aws_s3_bucket.root_storage_bucket.bucket
 }
 
 resource "aws_s3_bucket_policy" "root_bucket_policy" {
   bucket     = aws_s3_bucket.root_storage_bucket.id
-  policy     = data.databricks_aws_bucket_policy.this.json
+  policy     = data.databricks_aws_bucket_policy.aws_bucket_policy.json
   depends_on = [aws_s3_bucket_public_access_block.root_storage_bucket]
 }
 
@@ -43,7 +43,7 @@ resource "aws_s3_bucket_versioning" "root_bucket_versioning" {
   }
 }
 
-resource "databricks_mws_storage_configurations" "this" {
+resource "databricks_mws_storage_configurations" "dbr_mws_storage" {
   provider                   = databricks.mws
   account_id                 = local.databricks_account_id
   bucket_name                = aws_s3_bucket.root_storage_bucket.bucket

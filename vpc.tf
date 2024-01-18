@@ -70,7 +70,7 @@ module "vpc_endpoints" {
   tags = var.tags
 }
 
-resource "databricks_mws_networks" "this" {
+resource "databricks_mws_networks" "dbr_mws_networks" {
   provider           = databricks.mws
   account_id         = local.databricks_account_id
   network_name       = "${local.prefix}-network"
